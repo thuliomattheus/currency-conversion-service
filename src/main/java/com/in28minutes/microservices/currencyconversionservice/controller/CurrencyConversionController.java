@@ -39,6 +39,7 @@ public class CurrencyConversionController {
     if(currencyConversion != null) {
       currencyConversion.setQuantity(quantity);
       currencyConversion.setTotalCalculatedAmount(currencyConversion.getConversionMultiple().multiply(BigDecimal.valueOf(quantity)));
+      currencyConversion.setEnvironment(currencyConversion.getEnvironment() + " rest template");
     }
 
     return currencyConversion;
@@ -52,6 +53,7 @@ public class CurrencyConversionController {
     if(currencyConversion != null) {
       currencyConversion.setQuantity(quantity);
       currencyConversion.setTotalCalculatedAmount(currencyConversion.getConversionMultiple().multiply(BigDecimal.valueOf(quantity)));
+      currencyConversion.setEnvironment(currencyConversion.getEnvironment() + " feign");
     }
 
     return currencyConversion;

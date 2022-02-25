@@ -6,10 +6,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.in28minutes.microservices.currencyconversionservice.entity.CurrencyConversion;
 
-@FeignClient(name="currency-exchange", url="http://localhost:8000")
+// O Feign com o Eureka implementam o esquema de client-side load balancer
+// Logo, se houver mais de uma instância rodando o microserviço currency-exchange,
+// as requisições serão balanceadas entre estas instâncias
+@FeignClient(name="currency-exchange")
 public interface CurrencyExchangeProxy {
 
   @GetMapping("/currency-exchange/from/{from}/to/{to}")
   public CurrencyConversion retrieveExchangeValue(@PathVariable String from, @PathVariable String to);
-
 }
